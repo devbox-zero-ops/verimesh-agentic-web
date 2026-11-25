@@ -1,0 +1,32 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "verimesh_trust_auditor",
+      "front_man": "verimesh_coordinator",
+      "aliases": [
+        "verimesh",
+        "verimesh_trust_auditor"
+      ],
+      "url": "verimesh_trust_auditor"
+    },
+    {
+      "network": "compliance_fmea_peer",
+      "front_man": "compliance_auditor",
+      "aliases": [
+        "compliance_fmea_peer",
+        "compliance_auditor"
+      ],
+      "url": "compliance_fmea_peer"
+    }
+  ],
+  "imports": [
+    {
+      "alias": "compliance_fmea_peer",
+      "url": "./compliance_fmea_peer.network.json"
+    }
+  ],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

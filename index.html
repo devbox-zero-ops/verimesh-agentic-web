@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='800' font-size='28'%3EVM%3C/text%3E%3C/svg%3E" />
+  <title>VeriMesh — Open Agentic Web Trust, Primary-Source &amp; Peer Discovery Hub</title>
+  <meta name="description" content="Open-source Worldwide Agentic Web (MVP Profile 0.3) conformance auditor, live zero-key primary-source agent network, and consent-gated peer delegation runtime." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">VM</span>
+        <div>
+          <h1>VeriMesh</h1>
+          <p class="subtitle">Open Agentic Web MVP Profile 0.3 · Trust, Primary-Source &amp; Peer Runtime</p>
+        </div>
+      </div>
+      <nav aria-label="Published agentic artifacts" class="artifact-links">
+        <a href="./agent-manifest.json" target="_blank" rel="noopener">agent-manifest.json</a>
+        <a href="./verimesh_trust_auditor.network.json" target="_blank" rel="noopener">network.json</a>
+        <a href="./.well-known/nsdeploy.json" target="_blank" rel="noopener">.well-known/nsdeploy.json</a>
+        <a href="https://github.com/devbox-zero-ops/verimesh-agentic-web" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <!-- Panel 1: Live MVP Profile 0.3 Conformance Auditor -->
+    <section class="card" aria-labelledby="auditor-heading">
+      <div class="card-head">
+        <div>
+          <span class="pill">TENET 1 &amp; 3 · INTEROPERABILITY</span>
+          <h2 id="auditor-heading">Live Open Agentic Site Auditor</h2>
+        </div>
+        <div id="audit-badge" class="score-badge" aria-live="polite">—</div>
+      </div>
+      <p class="muted">
+        Inspect any Open Agentic Website over browser <code>fetch()</code> (CORS fail-closed). Validates
+        <code>agent-manifest.json</code>, resolved Neuro SAN <code>.network.json</code>, front-agent reachability,
+        <code>peer_policy</code>, secret hygiene, and <code>.well-known/nsdeploy.json</code>.
+      </p>
+
+      <form id="audit-form" class="inline-form">
+        <label for="site-url-input" class="sr-only">Open Agentic Website URL</label>
+        <input id="site-url-input" type="url" required placeholder="https://example.org/agentic-site/" />
+        <button type="submit" class="btn-primary">Audit Site</button>
+      </form>
+
+      <div class="preset-row" role="group" aria-label="Preset sites to audit">
+        <button type="button" class="btn-chip" data-preset="self">Audit VeriMesh (Self)</button>
+        <button type="button" class="btn-chip" data-preset="guesthouse">Audit Cognizant Tidewhistle Ref</button>
+      </div>
+
+      <div id="audit-status" class="status-line" role="status" aria-live="polite"></div>
+      <ul id="audit-checks" class="check-list" aria-label="Conformance check results"></ul>
+    </section>
+
+    <!-- Panel 2: Interactive Browser Agent Runtime (Deterministic Zero-Key + BYOK Otari/OpenAI) -->
+    <section class="card" aria-labelledby="runtime-heading">
+      <div class="card-head">
+        <div>
+          <span class="pill">TENET 2 · BROWSER RUNTIME + BYOK</span>
+          <h2 id="runtime-heading">Multi-Agent Browser Runtime</h2>
+        </div>
+        <button type="button" id="open-byok-btn" class="btn-secondary">BYOK Router Settings</button>
+      </div>
+      <p class="muted">
+        Runs <code>verimesh_coordinator</code> directly in your browser. Works immediately in
+        <strong>Zero-Key Deterministic Mode</strong>, or connect your own OpenAI-compatible / Mozilla Otari key
+        (stored in <code>sessionStorage</code> only — never shared with peer networks).
+      </p>
+
+      <div class="preset-row" role="group" aria-label="Sample multi-agent prompts">
+        <button type="button" class="btn-chip" data-query="Audit this site's own agent-manifest.json against MVP Profile 0.3">Self-Audit Manifest</button>
+        <button type="button" class="btn-chip" data-query="Fetch live USGS earthquakes and Coinbase BTC/ETH spot prices">Live USGS + Coinbase</button>
+        <button type="button" class="btn-chip" data-query="Delegate FDA 21 CFR Part 11 FMEA RPN (S=8, O=4, D=3) to compliance peer">Peer Delegate: FDA FMEA</button>
+        <button type="button" class="btn-chip" data-query="Verify a 2-entry SHA-256 audit ledger and simulate 1-byte tamper detection">Peer Delegate: SHA-256 Chain</button>
+      </div>
+
+      <div id="chat-log" class="chat-log" aria-live="polite" aria-label="Agent execution transcript"></div>
+
+      <form id="chat-form" class="inline-form">
+        <label for="chat-input" class="sr-only">Ask VeriMesh coordinator</label>
+        <input id="chat-input" type="text" required placeholder="Ask verimesh_coordinator (e.g. audit URL, fetch USGS/Coinbase, delegate FMEA)..." />
+        <button type="submit" class="btn-primary">Run Agent</button>
+      </form>
+    </section>
+
+    <!-- Panel 3: Published Network Graph & Trust Boundary Inspector -->
+    <section class="card span-full" aria-labelledby="graph-heading">
+      <div class="card-head">
+        <div>
+          <span class="pill">PORTABLE DATA GRAPH</span>
+          <h2 id="graph-heading">Published Agent Graph &amp; Trust Boundaries</h2>
+        </div>
+        <span id="router-mode-pill" class="mode-pill">Mode: Zero-Key Deterministic</span>
+      </div>
+      <div id="graph-cards" class="graph-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>
+      VeriMesh · MIT License · Conforms to
+      <a href="https://github.com/cognizant-ai-labs/agentic-web" target="_blank" rel="noopener">Worldwide Agentic Web MVP Profile 0.3</a> ·
+      <a href="https://devbox-zero-ops.github.io/xiaheai-hub/" target="_blank" rel="noopener">DevBox ZeroOps Hub</a>
+    </p>
+  </footer>
+
+  <!-- Native Accessible Peer-Consent Modal (light dismiss) -->
+  <dialog id="peer-consent-dialog" closedby="any" aria-labelledby="consent-title">
+    <form method="dialog" class="dialog-box">
+      <h3 id="consent-title">Peer Agent Network Consent Required</h3>
+      <p class="muted">
+        <code>verimesh_coordinator</code> requested cross-network delegation to a peer agent network.
+        Per MVP Profile 0.3, private context (<code>sly_data</code>) and your BYOK router credentials are
+        <strong>stripped and never forwarded</strong>.
+      </p>
+      <dl class="consent-meta" id="consent-details"></dl>
+      <div class="dialog-actions">
+        <button type="submit" value="decline" class="btn-secondary">Decline</button>
+        <button type="submit" value="approve" class="btn-primary">Approve Peer Call</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Native Accessible BYOK Router Settings Modal -->
+  <dialog id="byok-dialog" closedby="any" aria-labelledby="byok-title">
+    <form method="dialog" class="dialog-box" id="byok-form">
+      <h3 id="byok-title">BYOK Inference Router Settings</h3>
+      <p class="muted">
+        Optional: supply an OpenAI-compatible or Mozilla Otari endpoint and API key. Stored strictly in
+        <code>sessionStorage</code> (cleared when the tab closes) and never sent to peer agent sites.
+      </p>
+      <label class="field">
+        <span>Router Base URL</span>
+        <input id="byok-base-url" type="url" value="https://api.otari.ai/api/v1" />
+      </label>
+      <label class="field">
+        <span>Model Name</span>
+        <input id="byok-model" type="text" value="alibaba/qwen3.8-flash" />
+      </label>
+      <label class="field">
+        <span>API Key (optional, session-only)</span>
+        <input id="byok-api-key" type="password" autocomplete="off" placeholder="Leave blank for Zero-Key Deterministic Mode" />
+      </label>
+      <div class="dialog-actions">
+        <button type="button" id="byok-clear-btn" class="btn-secondary">Clear Key</button>
+        <button type="submit" value="save" class="btn-primary">Save Settings</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="./js/runtime.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "protocol": "nsdeploy-agent-mcp/v1",
+  "network": "verimesh_trust_auditor",
+  "front_man": "verimesh_coordinator",
+  "available": false,
+  "reason": "Static GitHub Pages bundle; interactive execution runs locally in the visitor's browser with optional BYOK inference."
+}

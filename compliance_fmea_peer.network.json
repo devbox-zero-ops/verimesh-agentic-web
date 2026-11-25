@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "description": "Peer-linkable deterministic regulated compliance agent for FDA 21 CFR Part 11, ISO 13485, and AS9100D FMEA RPN scoring and SHA-256 tamper-evident audit chains.",
+    "sample_queries": [
+      "Score FDA 21 CFR Part 11 FMEA RPN for severity 8, occurrence 4, detectability 3",
+      "Verify SHA-256 sign-off ledger integrity"
+    ]
+  },
+  "llm_config": {
+    "model_name": "alibaba/qwen3.8-flash"
+  },
+  "max_steps": 6,
+  "cruse": {
+    "version": 1
+  },
+  "sly_data_policy": {
+    "default": "deny",
+    "allow_downstream": [],
+    "allow_upstream": []
+  },
+  "tools": [
+    {
+      "name": "compliance_auditor",
+      "function": {
+        "description": "Computes deterministic FMEA RPN risk tiers and verifies SHA-256 hash-chained compliance sign-off ledgers.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "standard": {
+              "type": "string",
+              "enum": ["FDA_21CFR11", "ISO_13485", "AS9100D"]
+            },
+            "severity": { "type": "integer", "minimum": 1, "maximum": 10 },
+            "occurrence": { "type": "integer", "minimum": 1, "maximum": 10 },
+            "detectability": { "type": "integer", "minimum": 1, "maximum": 10 }
+          },
+          "required": ["standard", "severity", "occurrence", "detectability"]
+        }
+      },
+      "instructions": "Run deterministic FMEA RPN thresholds and SHA-256 chain checks locally via Web Crypto. Never request or store private user credentials.",
+      "tools": [
+        "site_action_score_fmea_rpn",
+        "site_action_verify_sha256_chain"
+      ]
+    }
+  ]
+}

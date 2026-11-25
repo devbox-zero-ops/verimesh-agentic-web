@@ -1,0 +1,102 @@
+{
+  "brand": "VeriMesh — Open Agentic Trust & Primary-Source Hub",
+  "spec_profile": "worldwide-agentic-web-mvp/0.3",
+  "homepage": "https://devbox-zero-ops.github.io/verimesh-agentic-web/",
+  "networks": [
+    {
+      "name": "verimesh_trust_auditor",
+      "front_man": "verimesh_coordinator",
+      "hocon": "./verimesh_trust_auditor.network.json",
+      "description": "Audit any Open Agentic Website against MVP Profile 0.3, query live zero-key primary-source public APIs, and safely delegate regulated compliance checks to peer agent networks under explicit user consent.",
+      "tags": [
+        "agentic-web",
+        "trust-infrastructure",
+        "conformance-auditor",
+        "primary-source-data",
+        "peer-discovery"
+      ],
+      "sample_queries": [
+        "Audit this site's own agent-manifest.json against MVP Profile 0.3",
+        "Fetch latest USGS earthquakes and Coinbase BTC/ETH spot prices",
+        "Delegate a High-Risk FDA 21 CFR Part 11 FMEA RPN (S=8, O=4, D=3) audit to the compliance peer network",
+        "Verify a 2-entry SHA-256 sign-off ledger and test 1-byte tamper detection"
+      ]
+    },
+    {
+      "name": "compliance_fmea_peer",
+      "front_man": "compliance_auditor",
+      "hocon": "./compliance_fmea_peer.network.json",
+      "description": "Peer-linkable deterministic compliance agent for FDA 21 CFR Part 11, ISO 13485, and AS9100D FMEA RPN scoring and Web Crypto SHA-256 tamper-evident audit chains.",
+      "tags": [
+        "peer-network",
+        "compliance",
+        "fmea",
+        "sha256-audit"
+      ],
+      "sample_queries": [
+        "Calculate FMEA RPN for ISO 13485 with severity 7, occurrence 4, detectability 3",
+        "Verify SHA-256 audit chain integrity"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1",
+    "supports_deterministic_local_mode": true
+  },
+  "allowed_peers": [
+    "https://devbox-zero-ops.github.io",
+    "https://raw.githubusercontent.com"
+  ],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "require_explicit_user_consent": true,
+    "sly_data_default": "deny",
+    "note": "Calls only explicitly approved peer origins after visitor consent; router credentials never cross origin boundaries."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "verimesh_trust_auditor",
+    "front_man": "verimesh_coordinator",
+    "available": false,
+    "reason": "Static GitHub Pages bundle; interactive execution runs locally in the visitor's browser with optional BYOK inference."
+  },
+  "theme": {
+    "primary": "#0f766e"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "verimesh_trust_auditor",
+        "front_man": "verimesh_coordinator",
+        "aliases": [
+          "verimesh",
+          "trust_auditor"
+        ],
+        "url": "verimesh_trust_auditor"
+      },
+      {
+        "network": "compliance_fmea_peer",
+        "front_man": "compliance_auditor",
+        "aliases": [
+          "compliance_peer",
+          "fmea_auditor"
+        ],
+        "url": "compliance_fmea_peer"
+      }
+    ],
+    "imports": [
+      {
+        "alias": "compliance_fmea_peer",
+        "url": "./compliance_fmea_peer.network.json",
+        "consent_required": true
+      }
+    ],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  }
+}
